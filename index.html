@@ -38,32 +38,51 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
         </div>
 
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>License</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>MIT; see ./doc/LICENSE</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<h3>Usage</h3>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Start off with</p>
 
-<h3>Designer Templates</h3>
+<div class="highlight"><pre><span class="nb">require</span><span class="p">(</span><span class="s2">"</span><span class="s">luarocks.loader"</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">Set</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"</span><span class="s">Set"</span><span class="p">)</span>
+</pre></div>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Then, to create a set:</p>
 
-<h3>Rather Drive Stick?</h3>
+<div class="highlight"><pre><span class="kd">local</span> <span class="n">ilike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">()</span>
+</pre></div>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>to add items to a set:</p>
 
-<h3>Authors and Contributors</h3>
+<div class="highlight"><pre><span class="n">ilike</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="s2">"</span><span class="s">apples"</span><span class="p">)</span>
+<span class="n">ilike</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="s2">"</span><span class="s">bananas"</span><span class="p">)</span>
+</pre></div>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>or, we could have done:</p>
 
-<h3>Support or Contact</h3>
+<div class="highlight"><pre><span class="kd">local</span> <span class="n">ilike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="s2">"</span><span class="s">apples"</span><span class="p">,</span> <span class="s2">"</span><span class="s">bananas"</span><span class="p">})</span>
+</pre></div>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Let's have another set:</p>
+
+<div class="highlight"><pre><span class="kd">local</span> <span class="n">ulike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="s2">"</span><span class="s">apples"</span><span class="p">,</span> <span class="s2">"</span><span class="s">strawberries"</span><span class="p">})</span>
+</pre></div>
+
+<p>Then we can:</p>
+
+<div class="highlight"><pre><span class="kd">local</span> <span class="n">welike</span>     <span class="o">=</span> <span class="n">ilike</span> <span class="o">+</span> <span class="n">ulike</span> <span class="c1">-- union:        apples, bananas, strawberries</span>
+<span class="kd">local</span> <span class="n">webothlike</span> <span class="o">=</span> <span class="n">ilike</span> <span class="o">*</span> <span class="n">ulike</span> <span class="c1">-- intersection: apples</span>
+<span class="kd">local</span> <span class="n">udontlike</span>  <span class="o">=</span> <span class="n">ilike</span> <span class="o">-</span> <span class="n">ulike</span> <span class="c1">-- subtraction:  bananas</span>
+</pre></div>
+
+<p>Lastly, some conveniences:</p>
+
+<div class="highlight"><pre><span class="n">ilike</span><span class="p">:</span><span class="n">len</span><span class="p">()</span>  <span class="c1">-- 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ilike</span><span class="p">)</span> <span class="c1">-- {"apples", "bananas"}</span>
+</pre></div>
       </section>
 
     </div>
