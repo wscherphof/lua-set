@@ -2,7 +2,8 @@ package = "set"
 version = "0.1-1"
 source = {
   url = "git://github.com/wscherphof/lua-set.git",
-  dir = "set-0.1"
+  dir = "set-0.1",
+  branch = "v0.1"
 }
 description = {
   summary = "Straightforward Set library",
