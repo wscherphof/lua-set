@@ -7,7 +7,7 @@ source = {
 description = {
   summary = "Straightforward Set library",
   detailed = [[
-    Creating and manipulating sets, including + (union), - (substraction), * (intersection), and tostring()
+    Creating and manipulating sets, including + (union), - (subtraction), * (intersection), len(), and tostring()
   ]],
   homepage = "http://wscherphof.github.com/lua-set/",
   license = "MIT"
