@@ -1,10 +1,10 @@
 #LuaRock "set"
 Straightforward Set library for Lua
 
-###License
-MIT; see ./doc/LICENSE
+##License
+MIT; see `./doc/LICENSE`
 
-###Usage
+##Usage
 Start off with
 ```lua
 require("luarocks.loader")
