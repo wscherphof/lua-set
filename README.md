@@ -4,6 +4,12 @@ Straightforward Set library for Lua
 ##License
 MIT; see `./doc/LICENSE`
 
+##Install
+Set is a listed [LuaRock](http://luarocks.org/repositories/rocks/). Install using [LuaRocks](http://www.luarocks.org/): `luarocks install set`
+
+###Dependencies
+Set depends on [Lua 5.2](http://www.lua.org/download.html)
+
 ##Usage
 Start off with
 ```lua
