@@ -29,6 +29,12 @@ function Set:remove(e)
   return self
 end
 
+function Set:anelement()
+  for e in pairs(self) do
+    return e
+  end
+end
+
 -- Union
 Set.mt.__add = function (a, b)
   local res, a, b = Set:new(), Set:new(a), Set:new(b)

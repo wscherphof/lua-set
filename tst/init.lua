@@ -60,6 +60,11 @@ function test_add_remove()
   assert_equal(2, Set:new(t):remove(3):len())
 end
 
+function test_anelement()
+  local t = {1, "one", "", "nil", {}, {1, 2}}
+  assert( Set:new(t)[ Set:new(t):anelement() ] )
+end
+
 function test_union()
   assert( (Set:new("a") + Set:new("b")).a )
   assert( (Set:new("a") + Set:new("b")).b )
