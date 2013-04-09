@@ -1,36 +1,37 @@
 local Set = {}
 Set.mt = {__index = Set}
-function Set:new(t)
+function Set:new(values)
+  if getmetatable(values) == Set.mt then return values end
   local instance = {}
-  if type(t) == "table" then
-    if #t > 0 then
-      for _,v in ipairs(t) do
+  if type(values) == "table" then
+    if #values > 0 then
+      for _,v in ipairs(values) do
         instance[v] = true
       end
     else
-      for k in pairs(t) do
+      for k in pairs(values) do
         instance[k] = true
       end
     end
-  else
-    instance = {t}
+  elseif values ~= nil then
+    instance = {[values] = true}
   end
   return setmetatable(instance, Set.mt)
 end
 
 function Set:add(e)
-  self[e] = true
+  if e ~= nil then self[e] = true end
+  return self
 end
 
 function Set:remove(e)
-  self[e] = nil
+  if e ~= nil then self[e] = nil end
+  return self
 end
 
 -- Union
 Set.mt.__add = function (a, b)
-  local res = Set:new()
-  if getmetatable(a) ~= Set.mt then a = Set:new(a) end
-  if getmetatable(b) ~= Set.mt then b = Set:new(b) end
+  local res, a, b = Set:new(), Set:new(a), Set:new(b)
   for k in pairs(a) do res[k] = true end
   for k in pairs(b) do res[k] = true end
   return res
@@ -38,9 +39,7 @@ end
 
 -- Subtraction
 Set.mt.__sub = function (a, b)
-  local res = Set:new()
-  if getmetatable(a) ~= Set.mt then a = Set:new(a) end
-  if getmetatable(b) ~= Set.mt then b = Set:new(b) end
+  local res, a, b = Set:new(), Set:new(a), Set:new(b)
   for k in pairs(a) do res[k] = true end
   for k in pairs(b) do res[k] = nil end
   return res
@@ -48,9 +47,7 @@ end
 
 -- Intersection
 Set.mt.__mul = function (a, b)
-  local res = Set:new()
-  if getmetatable(a) ~= Set.mt then a = Set:new(a) end
-  if getmetatable(b) ~= Set.mt then b = Set:new(b) end
+  local res, a, b = Set:new(), Set:new(a), Set:new(b)
   for k in pairs(a) do
     res[k] = b[k]
   end
