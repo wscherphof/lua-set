@@ -1,14 +1,11 @@
 #LuaRock "set"
 Straightforward Set library for Lua
 
-##License
-MIT; see `./doc/LICENSE`
-
 ##Install
 Set is a listed [LuaRock](http://luarocks.org/repositories/rocks/). Install using [LuaRocks](http://www.luarocks.org/): `luarocks install set`
 
 ###Dependencies
-Set depends on [Lua 5.2](http://www.lua.org/download.html)
+Set depends on [Lua 5.2](http://www.lua.org/download.html). [lunitx](https://github.com/dcurrie/lunit) is needed to run the tests and will be installed if not present
 
 ##Usage
 Start off with
@@ -42,5 +39,12 @@ local udontlike  = ilike - ulike -- subtraction:  bananas
 Lastly, some conveniences:
 ```lua
 ilike:len()  -- 2
+local somethingilike = ilike:anelement()
 print(ilike) -- {"apples", "bananas"}
 ```
+
+##Tests
+See `./tst/init.lua`
+
+##License
+MIT; see `./doc/LICENSE`
