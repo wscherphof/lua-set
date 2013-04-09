@@ -89,4 +89,9 @@ function test_union()
   assert_error("attempt to perform arithmetic on a string value", function()
     assert( ("b" + "a" + Set:new()).a )
   end)
-end 
+end
+
+function test_subtract()
+  assert_nil( (Set:new(1)      - Set:new(1))      [1] )
+  assert_nil( (Set:new({1, 2}) - Set:new({2, 3})) [2] )
+end
