@@ -18,6 +18,7 @@ dependencies = {
 }
 build = {
   type = "builtin",
+  copy_directories = {"doc", "tst"},
   modules = {
     ["Set.init"] = "src/Set/init.lua"
   }
