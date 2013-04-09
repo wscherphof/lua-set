@@ -95,3 +95,11 @@ function test_subtract()
   assert_nil( (Set:new(1)      - Set:new(1))      [1] )
   assert_nil( (Set:new({1, 2}) - Set:new({2, 3})) [2] )
 end
+
+function test_intersection()
+  assert(     (Set:new(1)         * Set:new(1))         [1] )
+  assert(     (Set:new({1, 2, 3}) * Set:new({2, 3, 4})) [2] )
+  assert(     (Set:new({1, 2, 3}) * Set:new({2, 3, 4})) [3] )
+  assert_nil( (Set:new({1, 2, 3}) * Set:new({2, 3, 4})) [1] )
+  assert_nil( (Set:new({1, 2, 3}) * Set:new({2, 3, 4})) [4] )
+end
