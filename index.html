@@ -31,17 +31,13 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h2>License</h2>
-
-<p>MIT; see <code>./doc/LICENSE</code></p>
-
-<h2>Install</h2>
+        <h2>Install</h2>
 
 <p>Set is a listed <a href="http://luarocks.org/repositories/rocks/">LuaRock</a>. Install using <a href="http://www.luarocks.org/">LuaRocks</a>: <code>luarocks install set</code></p>
 
 <h3>Dependencies</h3>
 
-<p>Set depends on <a href="http://www.lua.org/download.html">Lua 5.2</a></p>
+<p>Set depends on <a href="http://www.lua.org/download.html">Lua 5.2</a>. <a href="https://github.com/dcurrie/lunit">lunitx</a> is needed to run the tests and will be installed if not present</p>
 
 <h2>Usage</h2>
 
@@ -82,8 +78,17 @@
 <p>Lastly, some conveniences:</p>
 
 <div class="highlight"><pre><span class="n">ilike</span><span class="p">:</span><span class="n">len</span><span class="p">()</span>  <span class="c1">-- 2</span>
+<span class="kd">local</span> <span class="n">somethingilike</span> <span class="o">=</span> <span class="n">ilike</span><span class="p">:</span><span class="n">anelement</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ilike</span><span class="p">)</span> <span class="c1">-- {"apples", "bananas"}</span>
 </pre></div>
+
+<h2>Tests</h2>
+
+<p>See <code>./tst/init.lua</code></p>
+
+<h2>License</h2>
+
+<p>MIT; see <code>./doc/LICENSE</code></p>
       </section>
     </div>
 
