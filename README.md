@@ -47,4 +47,4 @@ print(ilike) -- {"apples", "bananas"}
 See `./tst/init.lua`
 
 ##License
-MIT; see `./doc/LICENSE`
+LGPL+; see `./doc/LICENSE`
