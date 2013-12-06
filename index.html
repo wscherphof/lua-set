@@ -31,64 +31,69 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h2>Install</h2>
+        <h2>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
 
 <p>Set is a listed <a href="http://luarocks.org/repositories/rocks/">LuaRock</a>. Install using <a href="http://www.luarocks.org/">LuaRocks</a>: <code>luarocks install set</code></p>
 
-<h3>Dependencies</h3>
+<h3>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h3>
 
 <p>Set depends on <a href="http://www.lua.org/download.html">Lua 5.2</a>. <a href="https://github.com/dcurrie/lunit">lunitx</a> is needed to run the tests and will be installed if not present</p>
 
-<h2>Usage</h2>
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>Start off with</p>
 
-<div class="highlight"><pre><span class="nb">require</span><span class="p">(</span><span class="s2">"</span><span class="s">luarocks.loader"</span><span class="p">)</span>
+<div class="highlight highlight-lua"><pre><span class="nb">require</span><span class="p">(</span><span class="s2">"</span><span class="s">luarocks.loader"</span><span class="p">)</span>
 <span class="kd">local</span> <span class="n">Set</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="s2">"</span><span class="s">Set"</span><span class="p">)</span>
 </pre></div>
 
 <p>Then, to create a set:</p>
 
-<div class="highlight"><pre><span class="kd">local</span> <span class="n">ilike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">()</span>
+<div class="highlight highlight-lua"><pre><span class="kd">local</span> <span class="n">ilike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">()</span>
 </pre></div>
 
 <p>to add items to a set:</p>
 
-<div class="highlight"><pre><span class="n">ilike</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="s2">"</span><span class="s">apples"</span><span class="p">)</span>
+<div class="highlight highlight-lua"><pre><span class="n">ilike</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="s2">"</span><span class="s">apples"</span><span class="p">)</span>
 <span class="n">ilike</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="s2">"</span><span class="s">bananas"</span><span class="p">)</span>
 </pre></div>
 
 <p>or, we could have done:</p>
 
-<div class="highlight"><pre><span class="kd">local</span> <span class="n">ilike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="s2">"</span><span class="s">apples"</span><span class="p">,</span> <span class="s2">"</span><span class="s">bananas"</span><span class="p">})</span>
+<div class="highlight highlight-lua"><pre><span class="kd">local</span> <span class="n">ilike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="s2">"</span><span class="s">apples"</span><span class="p">,</span> <span class="s2">"</span><span class="s">bananas"</span><span class="p">})</span>
 </pre></div>
 
 <p>Let's have another set:</p>
 
-<div class="highlight"><pre><span class="kd">local</span> <span class="n">ulike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="s2">"</span><span class="s">apples"</span><span class="p">,</span> <span class="s2">"</span><span class="s">strawberries"</span><span class="p">})</span>
+<div class="highlight highlight-lua"><pre><span class="kd">local</span> <span class="n">ulike</span> <span class="o">=</span> <span class="n">Set</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="s2">"</span><span class="s">apples"</span><span class="p">,</span> <span class="s2">"</span><span class="s">strawberries"</span><span class="p">})</span>
 </pre></div>
 
 <p>Then we can:</p>
 
-<div class="highlight"><pre><span class="kd">local</span> <span class="n">welike</span>     <span class="o">=</span> <span class="n">ilike</span> <span class="o">+</span> <span class="n">ulike</span> <span class="c1">-- union:        apples, bananas, strawberries</span>
+<div class="highlight highlight-lua"><pre><span class="kd">local</span> <span class="n">welike</span>     <span class="o">=</span> <span class="n">ilike</span> <span class="o">+</span> <span class="n">ulike</span> <span class="c1">-- union:        apples, bananas, strawberries</span>
 <span class="kd">local</span> <span class="n">webothlike</span> <span class="o">=</span> <span class="n">ilike</span> <span class="o">*</span> <span class="n">ulike</span> <span class="c1">-- intersection: apples</span>
 <span class="kd">local</span> <span class="n">udontlike</span>  <span class="o">=</span> <span class="n">ilike</span> <span class="o">-</span> <span class="n">ulike</span> <span class="c1">-- subtraction:  bananas</span>
 </pre></div>
 
 <p>Lastly, some conveniences:</p>
 
-<div class="highlight"><pre><span class="n">ilike</span><span class="p">:</span><span class="n">len</span><span class="p">()</span>  <span class="c1">-- 2</span>
+<div class="highlight highlight-lua"><pre><span class="n">ilike</span><span class="p">:</span><span class="n">len</span><span class="p">()</span>  <span class="c1">-- 2</span>
 <span class="kd">local</span> <span class="n">somethingilike</span> <span class="o">=</span> <span class="n">ilike</span><span class="p">:</span><span class="n">anelement</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ilike</span><span class="p">)</span> <span class="c1">-- {"apples", "bananas"}</span>
 </pre></div>
 
-<h2>Tests</h2>
+<h2>
+<a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
 
 <p>See <code>./tst/init.lua</code></p>
 
-<h2>License</h2>
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p>MIT; see <code>./doc/LICENSE</code></p>
+<p>LGPL+; see <code>./doc/LICENSE</code></p>
       </section>
     </div>
 
