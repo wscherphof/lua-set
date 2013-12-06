@@ -7,6 +7,32 @@ module("test_set", lunitx.testcase, package.seeall)
 
 local Set = require("Set")
 
+function test_new_copy_idx()
+  local orig, copy
+  orig = Set:new({1, 2, 3})
+  copy = Set:new(orig)
+  copy[2] = nil
+  assert(orig[1])
+  assert(orig[2])
+  assert(orig[3])
+  assert(copy[1])
+  assert_nil(copy[2])
+  assert(copy[3])
+end
+
+function test_new_copy_obj()
+  local orig, copy
+  orig = Set:new({"a", "b", "c"})
+  copy = Set:new(orig)
+  copy["b"] = nil
+  assert(orig["a"])
+  assert(orig["b"])
+  assert(orig["c"])
+  assert(copy["a"])
+  assert_nil(copy["b"])
+  assert(copy["c"])
+end
+
 function test_new_len()
   local a, b, c, d = 1, "1", "one", {}
   local set = Set:new({a, b, c, d})

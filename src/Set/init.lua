@@ -1,10 +1,10 @@
 local Set = {}
 Set.mt = {__index = Set}
 function Set:new(values)
-  if getmetatable(values) == Set.mt then return values end
   local instance = {}
+  local isSet if getmetatable(values) == Set.mt then isSet = true end
   if type(values) == "table" then
-    if #values > 0 then
+    if not isSet and #values > 0 then
       for _,v in ipairs(values) do
         instance[v] = true
       end
