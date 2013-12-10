@@ -65,7 +65,7 @@ Set.mt.__tostring = function (set)
   local s = "{"
   local sep = ""
   for k in pairs(set) do
-    s = s .. sep .. k
+    s = s .. sep .. tostring(k)
     sep = ", "
   end
   return s .. "}"
