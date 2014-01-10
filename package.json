@@ -1,0 +1,27 @@
+{
+  "name": "lua-set",
+  "version": "0.0.1",
+  "description": "Straightforward Set library for Lua; creating and manipulating sets, including + (union), - (subtraction), * (intersection), len(), and tostring()",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wscherphof/lua-set.git"
+  },
+  "keywords": [
+    "lua",
+    "lua-loader",
+    "set"
+  ],
+  "author": "Wouter Scherphof",
+  "license": "LGPL+",
+  "bugs": {
+    "url": "https://github.com/wscherphof/lua-set/issues"
+  },
+  "homepage": "https://github.com/wscherphof/lua-set"
+}
