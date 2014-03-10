@@ -36,7 +36,14 @@ end
 function test_tostring()
   assert_equal(Set.mt.__tostring(Set:new({1, 2, 3})), "{1, 2, 3}")
   assert_equal(9,  #Set.mt.__tostring(Set:new({"a", "b", "c"})), "{a, b, c}               (or in a different permutation)")
-  assert_equal(23, #Set.mt.__tostring(Set:new({ {} })),          "{table: 0x7ff498c52ea0} (but a different same-length key)")
+  local expected_length;
+  if _VERSION == 'Lua 5.1' then
+      expected_length = 19
+  else
+      expected_length = 23
+  end
+
+  assert_equal(expected_length, #Set.mt.__tostring(Set:new({ {} })),          "{table: 0x7ff498c52ea0} (but a different same-length key)")
 end
 
 function test_new_len()

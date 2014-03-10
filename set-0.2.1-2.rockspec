@@ -1,5 +1,5 @@
 package = "set"
-version = "0.2.1-1"
+version = "0.2.1-2"
 source = {
   url = "git://github.com/wscherphof/lua-set.git",
   branch = "v0.2.1"
