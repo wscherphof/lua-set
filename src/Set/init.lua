@@ -35,6 +35,14 @@ function Set:anelement()
   end
 end
 
+function Set:has(e)
+  if self[e] == nil then
+    return false
+  else
+    return true
+  end
+end
+
 -- Union
 Set.mt.__add = function (a, b)
   local res, a, b = Set:new(), Set:new(a), Set:new(b)
