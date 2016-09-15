@@ -1,6 +1,6 @@
 require("luarocks.loader")
 -- Omit next line in actual module clients; it's only to support development of the module itself
-package.path = "../src/?/init.lua;" .. package.path
+package.path = "../src/?/init.lua;" .. "./src/?/init.lua;" .. package.path
 
 local lunitx = require("lunitx")
 module("test_set", lunitx.testcase, package.seeall)
@@ -36,7 +36,26 @@ end
 function test_tostring()
   assert_equal(Set.mt.__tostring(Set:new({1, 2, 3})), "{1, 2, 3}")
   assert_equal(9,  #Set.mt.__tostring(Set:new({"a", "b", "c"})), "{a, b, c}               (or in a different permutation)")
-  assert_equal(23, #Set.mt.__tostring(Set:new({ {} })),          "{table: 0x7ff498c52ea0} (but a different same-length key)")
+  local expected_length;
+  -- this will be 18 on lua5.2, 19 on luajit, and either 17 or 18 on lua5.1 randomly
+  -- those numbers might totally change on a 32 bit architecture.
+  expected_length = #(tostring({}))+2;
+  if _VERSION == 'Lua 5.1' then
+      if jit then
+          weird = 19 ~= expected_length;
+      else
+          if(expected_length ~= 17 and expected_length ~= 18) then
+              weird = true
+          end
+      end
+  else
+      weird = 18 ~= expected_length
+  end
+  if weird then
+      print('Warning: expected_length of tostring(table) was sort of weird: '..expected_length)
+  end
+
+  assert_equal(expected_length, #Set.mt.__tostring(Set:new({ {} })),          "{table: 0x7ff498c52ea0} (but a different same-length key)")
 end
 
 function test_new_len()
